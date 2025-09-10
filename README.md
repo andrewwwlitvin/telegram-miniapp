@@ -2,7 +2,7 @@
 
 A gamified micro-scalping trading terminal built as a Telegram Mini App for educational purposes.
 
-![App Preview](https://via.placeholder.com/400x600/667eea/ffffff?text=App+Preview)
+![App Preview]((https://andrewwwlitvin.github.io/telegram-miniapp/))
 
 ## 🌟 Features
 
