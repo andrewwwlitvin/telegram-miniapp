@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTC Trading Learning App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🚀 BTC Trading Hub</h1>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar"></div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Loading...</div>
+                    <div class="user-id" id="userId"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- BTC Chart Section -->
+        <section class="chart-section">
+            <div class="chart-header">
+                <h2>📈 Bitcoin Price</h2>
+                <div class="price-info">
+                    <span class="current-price" id="btcPrice">Loading...</span>
+                    <span class="price-change" id="priceChange">-</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="priceChart" width="350" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Deposit Section -->
+        <section class="deposit-section">
+            <h2>💰 Deposit Funds</h2>
+            <div class="deposit-options">
+                <button class="deposit-btn stars-btn" id="depositStars">
+                    ⭐ Deposit Telegram Stars
+                </button>
+                <button class="deposit-btn ton-btn" id="depositTon">
+                    💎 Connect TON Wallet
+                </button>
+            </div>
+            <div class="balance">
+                <span>Current Balance: </span>
+                <span id="userBalance">0 USDT</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🎮 Learning Mode - Practice Trading Safely</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
