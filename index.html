@@ -2,60 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTC Trading Learning App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Trading App</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>🚀 BTC Trading Hub</h1>
-            <div class="user-info">
-                <div class="user-avatar" id="userAvatar"></div>
-                <div class="user-details">
-                    <div class="user-name" id="userName">Loading...</div>
-                    <div class="user-id" id="userId"></div>
+        <!-- Home Screen -->
+        <div class="home-screen" id="homeScreen">
+            <div class="header">
+                <h1>Trading App</h1>
+                <div class="user-info">
+                    <span id="userName">Loading...</span>
                 </div>
             </div>
-        </header>
+            
+            <div class="trading-pairs">
+                <button class="pair-button" onclick="openTradingScreen('BTC-USDT')">
+                    <div class="pair-name">BTC-USDT</div>
+                    <div class="pair-price" id="btcPrice">Loading...</div>
+                </button>
+                
+                <button class="pair-button" onclick="openTradingScreen('ETH-USDT')">
+                    <div class="pair-name">ETH-USDT</div>
+                    <div class="pair-price" id="ethPrice">Loading...</div>
+                </button>
+                
+                <button class="pair-button" onclick="openTradingScreen('SOL-USDT')">
+                    <div class="pair-name">SOL-USDT</div>
+                    <div class="pair-price" id="solPrice">Loading...</div>
+                </button>
+            </div>
+        </div>
 
-        <!-- BTC Chart Section -->
-        <section class="chart-section">
-            <div class="chart-header">
-                <h2>📈 Bitcoin Price</h2>
-                <div class="price-info">
-                    <span class="current-price" id="btcPrice">Loading...</span>
-                    <span class="price-change" id="priceChange">-</span>
-                </div>
+        <!-- Trading Screen -->
+        <div class="trading-screen" id="tradingScreen">
+            <div class="trading-header">
+                <button class="back-button" onclick="goHome()">←</button>
+                <div class="pair-title" id="currentPair">BTC-USDT</div>
             </div>
+            
+            <div class="price-info">
+                <div class="current-price" id="tradingPrice">$0.00</div>
+                <div class="price-change" id="tradingChange">-</div>
+            </div>
+            
             <div class="chart-container">
-                <canvas id="priceChart" width="350" height="200"></canvas>
+                <canvas id="priceChart" width="300" height="200"></canvas>
             </div>
-        </section>
-
-        <!-- Deposit Section -->
-        <section class="deposit-section">
-            <h2>💰 Deposit Funds</h2>
-            <div class="deposit-options">
-                <button class="deposit-btn stars-btn" id="depositStars">
-                    ⭐ Deposit Telegram Stars
+            
+            <div class="balance-section">
+                <div class="balance-label">Balance</div>
+                <div class="balance-amount">100.00 USDT</div>
+            </div>
+            
+            <div class="deposit-buttons">
+                <button class="deposit-btn stars-btn" onclick="depositStars()">
+                    ADD STARS
                 </button>
-                <button class="deposit-btn ton-btn" id="depositTon">
-                    💎 Connect TON Wallet
+                <button class="deposit-btn ton-btn" onclick="depositTon()">
+                    DEPOSIT TON
                 </button>
             </div>
-            <div class="balance">
-                <span>Current Balance: </span>
-                <span id="userBalance">0 USDT</span>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>🎮 Learning Mode - Practice Trading Safely</p>
-        </footer>
+        </div>
     </div>
 
     <script src="script.js"></script>
