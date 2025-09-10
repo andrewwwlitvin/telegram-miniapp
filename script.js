@@ -78,9 +78,14 @@ async function loadAllPrices() {
     } catch (error) {
         console.error('Error loading prices:', error);
         // Use fallback simulated data
-        priceData['BTC-USDT'] = { price: 63000, change: 0 };
-        priceData['ETH-USDT'] = { price: 3200, change: 0 };
-        priceData['SOL-USDT'] = { price: 140, change: 0 };
+        priceData['BTC-USDT'] = { price: 63000 + (Math.random() - 0.5) * 1000, change: (Math.random() - 0.5) * 5 };
+        priceData['ETH-USDT'] = { price: 3200 + (Math.random() - 0.5) * 100, change: (Math.random() - 0.5) * 5 };
+        priceData['SOL-USDT'] = { price: 140 + (Math.random() - 0.5) * 10, change: (Math.random() - 0.5) * 5 };
+        
+        // Update home screen with fallback data
+        document.getElementById('btcPrice').textContent = `${priceData['BTC-USDT'].price.toFixed(2)}`;
+        document.getElementById('ethPrice').textContent = `${priceData['ETH-USDT'].price.toFixed(2)}`;
+        document.getElementById('solPrice').textContent = `${priceData['SOL-USDT'].price.toFixed(2)}`;
     }
 }
 
