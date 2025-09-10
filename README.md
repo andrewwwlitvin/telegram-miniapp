@@ -34,5 +34,5 @@ Try the app: [Open in Telegram](https://t.me/@learn_to_scalp_with_bot)
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/telegram-miniapp.git
+   git clone https://github.com/andrewwwlitvin/telegram-miniapp.git
    cd telegram-miniapp
