@@ -2,93 +2,138 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header Styles */
+/* Home Screen */
+.home-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.home-screen.hidden {
+    display: none;
+}
+
 .header {
     text-align: center;
-    margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+    margin-bottom: 24px;
+    padding: 16px 0;
 }
 
 .header h1 {
     font-size: 24px;
-    margin-bottom: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .user-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-}
-
-.user-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #ffd700, #ffed4a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.user-name {
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.user-id {
-    font-size: 12px;
+    gap: 12px;
+    font-size: 14px;
     opacity: 0.8;
 }
 
-/* Chart Section */
-.chart-section {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(10px);
+.trading-pairs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
 }
 
-.chart-header {
+.pair-button {
+    background: #2a2a2a;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
 }
 
-.chart-header h2 {
+.pair-button:active {
+    background: #3a3a3a;
+}
+
+.pair-name {
     font-size: 18px;
 }
 
+.pair-price {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+/* Trading Screen */
+.trading-screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+.trading-screen.active {
+    display: flex;
+}
+
+.trading-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 8px 0;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+.pair-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .price-info {
-    text-align: right;
+    text-align: center;
+    margin-bottom: 16px;
 }
 
 .current-price {
-    display: block;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
 }
 
 .price-change {
@@ -96,7 +141,7 @@ body {
 }
 
 .price-change.positive {
-    color: #4ade80;
+    color: #22c55e;
 }
 
 .price-change.negative {
@@ -104,96 +149,69 @@ body {
 }
 
 .chart-container {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Deposit Section */
-.deposit-section {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
+    flex: 1;
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 16px;
     margin-bottom: 20px;
-    backdrop-filter: blur(10px);
+    position: relative;
 }
 
-.deposit-section h2 {
-    margin-bottom: 15px;
+#priceChart {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.balance-section {
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 16px;
     text-align: center;
+    margin-bottom: 16px;
 }
 
-.deposit-options {
+.balance-label {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.deposit-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 12px;
 }
 
 .deposit-btn {
-    padding: 15px 20px;
+    flex: 1;
+    padding: 16px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: opacity 0.2s;
 }
 
-.deposit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.deposit-btn:active {
+    opacity: 0.8;
 }
 
 .stars-btn {
-    background: linear-gradient(45deg, #ffd700, #ffed4a);
-    color: #333;
+    background: #ffd700;
+    color: #000;
 }
 
 .ton-btn {
-    background: linear-gradient(45deg, #0088cc, #00a8ff);
+    background: #0088cc;
     color: white;
 }
 
-.balance {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    margin-top: 30px;
-    opacity: 0.8;
-    font-size: 14px;
-}
-
-/* Loading Animation */
 .loading {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-/* Responsive Design */
-@media (max-width: 380px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .chart-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .price-info {
-        text-align: left;
-    }
+    opacity: 0.5;
 }
